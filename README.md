@@ -1,71 +1,90 @@
-# autohinter README
+# 🧠 Autohinter VS Code Extension
 
-This is the README for your extension "autohinter". After writing up a brief description, we recommend including the following sections.
-
-## Features
-
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
-
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
-
-## Requirements
-
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
-
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
+**Autohinter** is a lightweight AI assistant for developers. It converts natural-language comments into step-by-step programming instructions using OpenAI’s GPT models.
 
 ---
 
-## Following extension guidelines
+## ✨ Features
 
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
+* Write a comment like:
 
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
+  ```js
+  // Assign every student a random number
+  ```
+* Highlight it and press `Ctrl + Alt + S`
+* Autohinter transforms it into something like:
 
-## Working with Markdown
+  ```js
+  // Assign every student a random number
+  // 1. Loop through each student in the list.
+  // 2. Generate a random number.
+  // 3. Assign the number to the current student.
+  ```
 
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
+---
 
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
+## 🚀 Getting Started
 
-## For more information
+### 1. Clone and Install
 
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+```bash
+git clone https://github.com/yourusername/autohinter.git
+cd autohinter
+npm install
+```
 
-**Enjoy!**
+### 2. Open in VS Code
+
+* Open the folder in VS Code
+* Press `F5` to launch the Extension Development Host
+
+---
+
+## 🔑 OpenAI API Key Setup
+
+Autohinter requires an OpenAI API key to function.
+
+1. Go to [https://platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys)
+2. Generate a new secret key (starts with `sk-`)
+3. In the **Extension Development Host** window:
+
+   * Go to **File → Preferences → Settings**
+   * Search for **Autohinter**
+   * Paste your API key into the `OpenAI API Key` field
+
+> 💡 Your key is stored locally and never shared.
+
+---
+
+## 🧪 Usage
+
+1. Write a high-level comment
+2. Highlight the comment
+3. Press `Ctrl + Alt + S`
+4. Watch step-by-step logic appear just below!
+
+---
+
+## ⚙️ Configuration
+
+| Setting                   | Description                    |
+| ------------------------- | ------------------------------ |
+| `autohinter.openaiApiKey` | Your OpenAI API key (required) |
+
+---
+
+## 💡 Example Prompts
+
+* `// Validate all user input`
+* `// Send a welcome email to each new user`
+* `// Merge two sorted arrays into one`
+
+---
+
+## 🧱 Built With
+
+* [TypeScript](https://www.typescriptlang.org/)
+* [VS Code Extension API](https://code.visualstudio.com/api)
+* [OpenAI Chat Completions API](https://platform.openai.com/docs/guides/gpt)
+
+---
