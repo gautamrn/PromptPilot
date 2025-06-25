@@ -1,6 +1,6 @@
 # 🧠 Autohinter VS Code Extension
 
-**Autohinter** is a lightweight AI assistant for developers. It converts natural-language comments into step-by-step programming instructions using OpenAI’s GPT models.
+**Autohinter** is a lightweight AI assistant for developers. It converts natural-language comments into step-by-step programming instructions using **Google's Gemini AI** models.
 
 ---
 
@@ -40,17 +40,17 @@ npm install
 
 ---
 
-## 🔑 OpenAI API Key Setup
+## 🔑 Gemini API Key Setup
 
-Autohinter requires an OpenAI API key to function.
+Autohinter requires a **Gemini API key** from Google to function.
 
-1. Go to [https://platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys)
-2. Generate a new secret key (starts with `sk-`)
+1. Go to [https://makersuite.google.com/app/apikey](https://makersuite.google.com/app/apikey)
+2. Generate a new API key for the Gemini model
 3. In the **Extension Development Host** window:
 
    * Go to **File → Preferences → Settings**
    * Search for **Autohinter**
-   * Paste your API key into the `OpenAI API Key` field
+   * Paste your API key into the `Gemini API Key` field
 
 > 💡 Your key is stored locally and never shared.
 
@@ -67,9 +67,9 @@ Autohinter requires an OpenAI API key to function.
 
 ## ⚙️ Configuration
 
-| Setting                   | Description                    |
-| ------------------------- | ------------------------------ |
-| `autohinter.openaiApiKey` | Your OpenAI API key (required) |
+| Setting                   | Description                            |
+| ------------------------- | -------------------------------------|
+| `autohinter.geminiApiKey` | Your Gemini API key (required)        |
 
 ---
 
@@ -85,6 +85,6 @@ Autohinter requires an OpenAI API key to function.
 
 * [TypeScript](https://www.typescriptlang.org/)
 * [VS Code Extension API](https://code.visualstudio.com/api)
-* [OpenAI Chat Completions API](https://platform.openai.com/docs/guides/gpt)
+* [Google Gemini API](https://developers.generativeai.google/)
 
 ---
