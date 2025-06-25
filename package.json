@@ -1,7 +1,7 @@
 {
   "name": "autohinter",
   "displayName": "autohinter",
-  "description": "",
+  "description": "Turn natural-language comments into step-by-step coding instructions",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.101.0"
@@ -9,22 +9,34 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onCommand:autohinter.generateSteps"
+  ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "extension.generateSteps",
+        "command": "autohinter.generateSteps",
         "title": "Generate Step-by-Step Instruction"
       }
     ],
     "keybindings": [
       {
-        "command": "extension.generateSteps",
-        "key": "ctrl+shift+s",
+        "command": "autohinter.generateSteps",
+        "key": "ctrl+alt+s",
         "when": "editorTextFocus"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "Autohinter Settings",
+      "properties": {
+        "autohinter.openaiApiKey": {
+          "type": "string",
+          "default": "",
+          "description": "Your OpenAI API key (starts with 'sk-')"
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
@@ -35,17 +47,14 @@
     "test": "vscode-test"
   },
   "devDependencies": {
+    "@types/vscode": "^1.101.0",
     "@types/mocha": "^10.0.10",
     "@types/node": "20.x",
-    "@types/vscode": "^1.101.0",
     "@typescript-eslint/eslint-plugin": "^8.31.1",
     "@typescript-eslint/parser": "^8.31.1",
-    "@vscode/test-cli": "^0.0.10",
-    "@vscode/test-electron": "^2.5.2",
     "eslint": "^9.25.1",
-    "typescript": "^5.8.3"
-  },
-  "dependencies": {
-    "dotenv": "^16.5.0"
+    "typescript": "^5.8.3",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.5.2"
   }
 }

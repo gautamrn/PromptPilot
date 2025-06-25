@@ -3,7 +3,7 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 export function activate(context: vscode.ExtensionContext) {
-  let disposable = vscode.commands.registerCommand('extension.generateSteps', async () => {
+  let disposable = vscode.commands.registerCommand('autohinter.generateSteps', async () => {
     const editor = vscode.window.activeTextEditor;
     if (!editor) return;
 
@@ -29,37 +29,57 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 async function generateSteps(input: string): Promise<string[]> {
-  const apiKey = process.env.OPENAI_APIKEY;
+  const apiKey = vscode.workspace.getConfiguration().get<string>('autohinter.openaiApiKey');
 
-  if (!apiKey) {
+  if (!apiKey || apiKey.trim() === '') {
     vscode.window.showErrorMessage("Missing OpenAI API key.");
     return [];
   }
 
-  const response = await fetch("https://api.openai.com/v1/chat/completions", {
-    method: "POST",
-    headers: {
-      "Authorization": `Bearer ${apiKey}`,
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      model: "gpt-4",
-      messages: [
-        {
-          role: "user",
-          content: `Break this down step by step for code: "${input}"`
-        }
-      ],
-      temperature: 0.5
-    })
-  });
+  try {
+    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${apiKey}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        model: "gpt-3.5-turbo",
+        messages: [
+          {
+            role: "user",
+            content: `Break this down step by step for code: "${input}"`
+          }
+        ],
+        temperature: 0.5
+      })
+    });
 
-  const json = await response.json();
-  const steps = json.choices[0].message.content
-    .split('\n')
-    .map(line => line.replace(/^[-*\d.]+\s*/, '').trim())
-    .filter(line => line.length > 0);
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error("OpenAI API Error:", errorText);
+      vscode.window.showErrorMessage(`OpenAI API Error: ${response.statusText}`);
+      return [];
+    }
 
-  return steps;
+    const json = await response.json();
+    const content = json.choices?.[0]?.message?.content;
+
+    if (!content) {
+      vscode.window.showErrorMessage("OpenAI response was empty or malformed.");
+      console.error("OpenAI API response:", json);
+      return [];
+    }
+
+    const steps = content
+      .split('\n')
+      .map(line => line.replace(/^[-*\d.]+\s*/, '').trim())
+      .filter(line => line.length > 0);
+
+    return steps;
+  } catch (error) {
+    console.error("Unexpected error calling OpenAI:", error);
+    vscode.window.showErrorMessage("Unexpected error contacting OpenAI.");
+    return [];
+  }
 }
-
