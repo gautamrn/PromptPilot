@@ -1,6 +1,4 @@
 import * as vscode from 'vscode';
-import * as dotenv from 'dotenv';
-dotenv.config();
 
 export function activate(context: vscode.ExtensionContext) {
   let disposable = vscode.commands.registerCommand('autohinter.generateSteps', async () => {
@@ -15,8 +13,9 @@ export function activate(context: vscode.ExtensionContext) {
       return;
     }
 
-    // Replace this with API call later
     const steps = await generateSteps(text);
+
+    if (!steps.length) return;
 
     vscode.window.showInformationMessage("Steps generated!");
     const newPosition = selection.end.translate(1);
@@ -29,57 +28,54 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 async function generateSteps(input: string): Promise<string[]> {
-  const apiKey = vscode.workspace.getConfiguration().get<string>('autohinter.openaiApiKey');
+  const apiKey = vscode.workspace.getConfiguration().get<string>('autohinter.geminiApiKey');
 
   if (!apiKey || apiKey.trim() === '') {
-    vscode.window.showErrorMessage("Missing OpenAI API key.");
+    vscode.window.showErrorMessage("Missing Gemini API key. Please add it in Settings.");
     return [];
   }
 
   try {
-    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
       method: "POST",
       headers: {
-        "Authorization": `Bearer ${apiKey}`,
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        model: "gpt-3.5-turbo",
-        messages: [
+        contents: [
           {
             role: "user",
-            content: `Break this down step by step for code: "${input}"`
+            parts: [
+              {
+                text: `Break down this programming task into a concise numbered list of general coding steps.  
+                      Each step should be short and clear, and followed by a blank line.  
+                      Do not add extra explanation, just the steps. Add a new blank line in between each line as well and one at the end: "${input}"`
+              }
+            ]
           }
-        ],
-        temperature: 0.5
+        ]
       })
     });
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.error("OpenAI API Error:", errorText);
-      vscode.window.showErrorMessage(`OpenAI API Error: ${response.statusText}`);
+      vscode.window.showErrorMessage(`Gemini API Error: ${response.statusText}`);
+      console.error("Gemini error:", response.status, errorText);
       return [];
     }
 
     const json = await response.json();
-    const content = json.choices?.[0]?.message?.content;
+    const text = json.candidates?.[0]?.content?.parts?.[0]?.text || '';
 
-    if (!content) {
-      vscode.window.showErrorMessage("OpenAI response was empty or malformed.");
-      console.error("OpenAI API response:", json);
-      return [];
-    }
-
-    const steps = content
+    const steps = text
       .split('\n')
       .map(line => line.replace(/^[-*\d.]+\s*/, '').trim())
       .filter(line => line.length > 0);
 
     return steps;
   } catch (error) {
-    console.error("Unexpected error calling OpenAI:", error);
-    vscode.window.showErrorMessage("Unexpected error contacting OpenAI.");
+    console.error("Unexpected error calling Gemini:", error);
+    vscode.window.showErrorMessage("Unexpected error contacting Gemini API.");
     return [];
   }
 }

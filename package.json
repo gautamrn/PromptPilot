@@ -34,6 +34,11 @@
           "type": "string",
           "default": "",
           "description": "Your OpenAI API key (starts with 'sk-')"
+        },
+        "autohinter.geminiApiKey": {
+          "type": "string",
+          "default": "",
+          "description": "Your Gemini API key from https://makersuite.google.com/app/apikey"
         }
       }
     }
