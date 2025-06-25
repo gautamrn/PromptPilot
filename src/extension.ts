@@ -29,20 +29,37 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 async function generateSteps(input: string): Promise<string[]> {
+  const apiKey = process.env.OPENAI_APIKEY;
+
+  if (!apiKey) {
+    vscode.window.showErrorMessage("Missing OpenAI API key.");
+    return [];
+  }
+
   const response = await fetch("https://api.openai.com/v1/chat/completions", {
     method: "POST",
     headers: {
-      "Authorization": `Bearer YOUR_API_KEY`,
+      "Authorization": `Bearer ${apiKey}`,
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
       model: "gpt-4",
-      messages: [{ role: "user", content: `Break this down step by step for code: "${input}"` }],
-      temperature: 0.7
+      messages: [
+        {
+          role: "user",
+          content: `Break this down step by step for code: "${input}"`
+        }
+      ],
+      temperature: 0.5
     })
   });
 
-  const data = await response.json();
-  return data.choices[0].message.content.split('\n').filter(line => line.trim() !== '');
+  const json = await response.json();
+  const steps = json.choices[0].message.content
+    .split('\n')
+    .map(line => line.replace(/^[-*\d.]+\s*/, '').trim())
+    .filter(line => line.length > 0);
+
+  return steps;
 }
 
