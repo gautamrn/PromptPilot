@@ -6,13 +6,14 @@
 
 ## ✨ Features
 
-* Write a comment like:
+- Write a comment like:
 
   ```js
   // Assign every student a random number
   ```
-* Highlight it and press `Ctrl + Alt + S`
-* Autohinter transforms it into something like:
+
+- Highlight it and press `Ctrl + Alt + S`
+- Autohinter transforms it into something like:
 
   ```js
   // Assign every student a random number
@@ -35,8 +36,8 @@ npm install
 
 ### 2. Open in VS Code
 
-* Open the folder in VS Code
-* Press `F5` to launch the Extension Development Host
+- Open the folder in VS Code
+- Press `F5` to launch the Extension Development Host
 
 ---
 
@@ -47,10 +48,9 @@ Autohinter requires a **Gemini API key** from Google to function.
 1. Go to [https://makersuite.google.com/app/apikey](https://makersuite.google.com/app/apikey)
 2. Generate a new API key for the Gemini model
 3. In the **Extension Development Host** window:
-
-   * Go to **File → Preferences → Settings**
-   * Search for **Autohinter**
-   * Paste your API key into the `Gemini API Key` field
+   - Go to **File → Preferences → Settings**
+   - Search for **Autohinter**
+   - Paste your API key into the `Gemini API Key` field
 
 > 💡 Your key is stored locally and never shared.
 
@@ -67,24 +67,24 @@ Autohinter requires a **Gemini API key** from Google to function.
 
 ## ⚙️ Configuration
 
-| Setting                   | Description                            |
-| ------------------------- | -------------------------------------|
-| `autohinter.geminiApiKey` | Your Gemini API key (required)        |
+| Setting                   | Description                    |
+| ------------------------- | ------------------------------ |
+| `autohinter.geminiApiKey` | Your Gemini API key (required) |
 
 ---
 
 ## 💡 Example Prompts
 
-* `// Validate all user input`
-* `// Send a welcome email to each new user`
-* `// Merge two sorted arrays into one`
+- `// Validate all user input`
+- `// Send a welcome email to each new user`
+- `// Merge two sorted arrays into one`
 
 ---
 
 ## 🧱 Built With
 
-* [TypeScript](https://www.typescriptlang.org/)
-* [VS Code Extension API](https://code.visualstudio.com/api)
-* [Google Gemini API](https://developers.generativeai.google/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [VS Code Extension API](https://code.visualstudio.com/api)
+- [Google Gemini API](https://developers.generativeai.google/)
 
 ---
