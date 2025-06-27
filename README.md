@@ -1,45 +1,18 @@
 🧠 Autohinter VS Code Extension
 
-Autohinter is a powerful VS Code extension that uses Google's Gemini AI to assist developers in writing, refactoring, and understanding code. It turns high-level comments into step-by-step tasks and adds powerful developer tools like code explanation, AI-based refactoring, and an interactive playground.
+Autohinter is a powerful AI assistant for developers. It enhances productivity by converting natural-language comments into step-by-step programming instructions using Google's Gemini AI, and also supports explanation, refactoring, and commit message suggestions.
 
 ✨ Features
 
-✅ Generate Steps
+🪄 Generate Steps: Turn a natural comment into a numbered breakdown
 
-Turn natural language comments into programming logic.
+🧠 Explain Code: Understand unfamiliar code blocks
 
-// Assign every student a random number
+🛠 Refactor Suggestions: Get concise refactoring ideas
 
-becomes:
+📝 Commit Message Generator: Summarize recent code edits into commit messages
 
-// Assign every student a random number
-// 1. Loop through each student in the list.
-
-// 2. Generate a random number.
-
-// 3. Assign the number to the current student.
-
-🧠 Explain Code
-
-Highlight any code and run the command to get a plain English explanation.
-
-🛠️ Suggest Refactor
-
-Select code and let Gemini propose a cleaner, more efficient version.
-
-🧾 Suggest Commit Message
-
-Get a commit message based on your staged changes.
-
-🧪 Autohinter Playground
-
-An interactive webview to:
-
-Prompt Gemini with custom input
-
-Choose between: Steps, Explain, or Refactor
-
-View output instantly below
+🧪 Interactive Playground: Try out prompts with live AI responses
 
 🚀 Getting Started
 
@@ -57,47 +30,67 @@ Press F5 to launch the Extension Development Host
 
 🔑 Gemini API Key Setup
 
-Autohinter requires a Gemini API key from Google to function.
+Autohinter requires a Gemini API key from Google:
 
-Visit https://makersuite.google.com/app/apikey
+Go to makersuite.google.com/app/apikey
 
-Generate a new API key
+Generate an API key
 
-In VS Code:
+In Extension Development Host:
 
-Open File → Preferences → Settings
+Open Settings (File → Preferences → Settings)
 
 Search for Autohinter
 
-Paste your Gemini key into the Gemini API Key field
+Paste your key into the Gemini API Key field
 
-💡 Your key is stored locally and never shared.
+🔐 Your key is stored locally and never shared.
 
 🧪 Usage
 
-Feature
+🪄 Generate Steps (Ctrl + Alt + S)
 
-How to Use
+Write a comment like:
 
-Generate Steps
+// Calculate average of random numbers
 
-Highlight a comment → Ctrl+Alt+S or Run Command
+Highlight the comment
 
-Explain Code
+Press Ctrl + Alt + S
 
-Highlight code → Run Autohinter: Explain Code
+Result:
 
-Suggest Refactor
+// Calculate average of random numbers
+// 1. Initialize a sum variable
+// 2. Generate random numbers in a loop
+// 3. Add them to the sum
+// 4. Divide sum by count
 
-Highlight code → Run Autohinter: Suggest Refactor
+🧠 Explain Code
 
-Suggest Commit Message
+Select code and open Command Palette (Ctrl + Shift + P)
 
-Run Autohinter: Suggest Commit Message
+Choose Explain Highlighted Code
 
-Open Playground
+🛠 Suggest Refactor
 
-Run Autohinter: Open Autohinter Playground
+Select code and open Command Palette
+
+Choose Suggest Refactor
+
+📝 Suggest Commit Message
+
+Open Command Palette
+
+Choose Suggest Commit Message
+
+🧪 Playground Panel
+
+Open Command Palette
+
+Choose Open Autohinter Playground
+
+Use buttons to test prompts: Steps, Explain, Refactor
 
 ⚙️ Configuration
 
@@ -107,21 +100,11 @@ Description
 
 autohinter.geminiApiKey
 
-Your Gemini API key (required)
+Your Gemini API key (from Google MakerSuite)
 
 autohinter.openaiApiKey
 
-(Optional) OpenAI key if you switch models
-
-💡 Example Prompts
-
-// Validate all user input
-
-// Send a welcome email to each new user
-
-// Merge two sorted arrays into one
-
-// Generate X numbers and average them
+(Optional) Fallback if you want to use OpenAI
 
 🧱 Built With
 
