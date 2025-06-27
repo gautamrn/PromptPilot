@@ -26,7 +26,7 @@
         "title": "Explain Highlighted Code"
       },
       {
-        "command": "autohinter.openPlayground",
+        "command": "autohinter.playgroundPanel",
         "title": "Open Autohinter Playground"
       }
     ],
