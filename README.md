@@ -1,6 +1,6 @@
-# 🧠 Autohinter VS Code Extension
+# 🧠 PromptPilot VS Code Extension
 
-**Autohinter** is a powerful AI assistant for developers. It enhances productivity by converting natural-language comments into step-by-step programming instructions using **Google's Gemini AI**, and also supports explanation, refactoring, and commit message suggestions.
+**PromptPilot** is a powerful AI assistant for developers. It enhances productivity by converting natural-language comments into step-by-step programming instructions using **Google's Gemini AI**, and also supports explanation, refactoring, and commit message suggestions.
 
 ---
 
@@ -19,8 +19,8 @@
 ### 1. Clone and Install
 
 ```bash
-git clone https://github.com/yourusername/autohinter.git
-cd autohinter
+git clone https://github.com/gautamrn/PromptPilot.git
+cd PromptPilot
 npm install
 ```
 
@@ -33,13 +33,13 @@ npm install
 
 ## 🔑 Gemini API Key Setup
 
-Autohinter requires a **Gemini API key** from Google:
+PromptPilot requires a **Gemini API key** from Google:
 
 1. Visit [https://makersuite.google.com/app/apikey](https://makersuite.google.com/app/apikey)
 2. Generate an API key
 3. In **VS Code Settings**:
    - Open **File → Preferences → Settings**
-   - Search for **Autohinter**
+   - Search for **PromptPilot**
    - Paste your key into the `Gemini API Key` field
 
 > 🔐 Your key is stored locally and never shared.
@@ -76,21 +76,21 @@ Autohinter requires a **Gemini API key** from Google:
 ### 🧠 Explain Code
 
 - Highlight any code block
-- Open the Command Palette → `Autohinter: Explain Highlighted Code`
+- Open the Command Palette → `PromptPilot: Explain Highlighted Code`
 
 ### 🛠 Suggest Refactor
 
 - Highlight any code block
-- Open the Command Palette → `Autohinter: Suggest Refactor`
+- Open the Command Palette → `PromptPilot: Suggest Refactor`
 
 ### 📝 Suggest Commit Message
 
-- Open the Command Palette → `Autohinter: Suggest Commit Message`
-- Autohinter uses your current file or changes to generate a meaningful commit message and inserts it into the Git input box
+- Open the Command Palette → `PromptPilot: Suggest Commit Message`
+- PromptPilot uses your current file or changes to generate a meaningful commit message and inserts it into the Git input box
 
 ### 🧪 Playground Panel
 
-- Open the Command Palette → `Autohinter: Open Autohinter Playground`
+- Open the Command Palette → `PromptPilot: Open PromptPilot Playground`
 - Use built-in buttons to:
   - ✨ Generate Steps
   - 🧠 Explain Code
@@ -103,8 +103,8 @@ Autohinter requires a **Gemini API key** from Google:
 
 | Setting                   | Description                                      |
 | ------------------------- | ------------------------------------------------ |
-| `autohinter.geminiApiKey` | Your Gemini API key (required)                   |
-| `autohinter.openaiApiKey` | (Optional) Support for future OpenAI integration |
+| `PromptPilot.geminiApiKey` | Your Gemini API key (required)                   |
+| `PromptPilot.openaiApiKey` | (Optional) Support for future OpenAI integration |
 
 ---
 

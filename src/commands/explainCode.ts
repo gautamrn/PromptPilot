@@ -4,7 +4,7 @@ import { getContextInfo } from '../utils/contextHelper';
 
 export function registerExplainCodeCommand(context: vscode.ExtensionContext) {
   context.subscriptions.push(
-    vscode.commands.registerCommand('autohinter.explainCode', async () => {
+    vscode.commands.registerCommand('PromptPilot.explainCode', async () => {
       const editor = vscode.window.activeTextEditor;
       if (!editor) return;
       const selection = editor.selection;

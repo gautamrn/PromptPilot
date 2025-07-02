@@ -3,7 +3,7 @@ import { callGemini } from '../utils/geminiClient';
 
 export function registerSuggestCommitMessageCommand(context: vscode.ExtensionContext) {
   context.subscriptions.push(
-    vscode.commands.registerCommand('autohinter.suggestCommitMessage', async () => {
+    vscode.commands.registerCommand('PromptPilot.suggestCommitMessage', async () => {
       const editor = vscode.window.activeTextEditor;
       if (!editor) {
         vscode.window.showErrorMessage('Open a file with changes.');

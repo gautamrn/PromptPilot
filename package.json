@@ -1,6 +1,6 @@
 {
-  "name": "autohinter",
-  "displayName": "autohinter",
+  "name": "PromptPilot",
+  "displayName": "PromptPilot",
   "description": "Turn natural-language comments into step-by-step coding instructions",
   "version": "0.0.1",
   "engines": {
@@ -10,42 +10,42 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:autohinter.generateSteps",
-    "onCommand:autohinter.explainCode",
-    "onCommand:autohinter.openPlayground"
+    "onCommand:PromptPilot.generateSteps",
+    "onCommand:PromptPilot.explainCode",
+    "onCommand:PromptPilot.openPlayground"
   ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "autohinter.generateSteps",
+        "command": "PromptPilot.generateSteps",
         "title": "Generate Step-by-Step Instruction"
       },
       {
-        "command": "autohinter.explainCode",
+        "command": "PromptPilot.explainCode",
         "title": "Explain Highlighted Code"
       },
       {
-        "command": "autohinter.playgroundPanel",
-        "title": "Open Autohinter Playground"
+        "command": "PromptPilot.playgroundPanel",
+        "title": "Open PromptPilot Playground"
       }
     ],
     "keybindings": [
       {
-        "command": "autohinter.generateSteps",
+        "command": "PromptPilot.generateSteps",
         "key": "ctrl+alt+s",
         "when": "editorTextFocus"
       }
     ],
     "configuration": {
-      "title": "Autohinter Settings",
+      "title": "PromptPilot Settings",
       "properties": {
-        "autohinter.openaiApiKey": {
+        "PromptPilot.openaiApiKey": {
           "type": "string",
           "default": "",
           "description": "Your OpenAI API key (starts with 'sk-')"
         },
-        "autohinter.geminiApiKey": {
+        "PromptPilot.geminiApiKey": {
           "type": "string",
           "default": "",
           "description": "Your Gemini API key from https://makersuite.google.com/app/apikey"

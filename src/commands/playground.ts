@@ -4,10 +4,10 @@ import { getContextInfo } from '../utils/contextHelper';
 
 export function registerPlaygroundPanelCommand(context: vscode.ExtensionContext) {
   context.subscriptions.push(
-    vscode.commands.registerCommand('autohinter.playgroundPanel', () => {
+    vscode.commands.registerCommand('PromptPilot.playgroundPanel', () => {
       const panel = vscode.window.createWebviewPanel(
-        'autohinter.playground',
-        'Autohinter Playground',
+        'PromptPilot.playground',
+        'Prompt Pilot Playground',
         vscode.ViewColumn.One,
         { enableScripts: true },
       );
@@ -38,7 +38,7 @@ export function registerPlaygroundPanelCommand(context: vscode.ExtensionContext)
 <!DOCTYPE html>
 <html lang="en">
 <body>
-  <h1>Autohinter Playground</h1>
+  <h1>Prompt Pilot Playground</h1>
   <textarea id="input" style="width:100%;height:100px"></textarea>
   <button onclick="send('steps')">Generate Steps</button>
   <button onclick="send('explain')">Explain Code</button>

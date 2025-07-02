@@ -4,7 +4,7 @@ import { getContextInfo } from '../utils/contextHelper';
 
 export function registerSuggestRefactorCommand(context: vscode.ExtensionContext) {
   context.subscriptions.push(
-    vscode.commands.registerCommand('autohinter.suggestRefactor', async () => {
+    vscode.commands.registerCommand('PromptPilot.suggestRefactor', async () => {
       const editor = vscode.window.activeTextEditor;
       if (!editor) return;
 

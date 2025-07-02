@@ -3,7 +3,7 @@ import { callGemini } from '../utils/geminiClient';
 
 export function registerGenerateStepsCommand(context: vscode.ExtensionContext) {
   context.subscriptions.push(
-    vscode.commands.registerCommand('autohinter.generateSteps', async () => {
+    vscode.commands.registerCommand('PromptPilot.generateSteps', async () => {
       const editor = vscode.window.activeTextEditor;
       if (!editor) return;
 

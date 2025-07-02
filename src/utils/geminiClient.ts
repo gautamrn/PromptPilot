@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 
 export async function callGemini(prompt: string): Promise<string> {
-  const apiKey = vscode.workspace.getConfiguration().get<string>('autohinter.geminiApiKey');
+  const apiKey = vscode.workspace.getConfiguration().get<string>('PromptPilot.geminiApiKey');
   if (!apiKey || apiKey.trim() === '') {
     vscode.window.showErrorMessage('Missing Gemini API key in settings.');
     return '';
